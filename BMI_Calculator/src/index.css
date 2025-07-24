@@ -44,7 +44,7 @@ body {
 }
 
 .wrapper .container {
-    width: 90vmin;
+    width: 92vmin;
     padding: 1.5em 2rem;
     background-color: var(--surface-color);
     border-radius: 0.5rem;
@@ -63,7 +63,7 @@ body {
 .container .inputForm {
     width: 100%;
     margin-bottom: 0.8rem;
-    padding-inline: 0.5rem;
+    /* padding-inline: 0.5rem; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -109,7 +109,7 @@ body {
 .weight-content #weight::placeholder,
 .height-content #height::placeholder {
     color: var(--gray-color);
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 
@@ -122,7 +122,7 @@ body {
 
 .calculate {
     width: 100%;
-    padding: 0.5rem;
+    /* padding: 0.4rem; */
     /* border: 2px solid var(--label-color); */
 }
 
@@ -131,11 +131,79 @@ body {
     width: 100%;
     padding: 0.4rem 0.8rem;
     border: none;
+    margin-bottom: 0.5rem;
     background-color: var(--label-color);
     color: var(--primary-white);
     border-radius: 0.2rem;
     font-weight: 600;
     font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.calculate button:hover {
+    background-color: var(--primary-orange);
+}
+
+.result {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.8rem;
+    border: 2px solid var(--border-color);
+    background-color: var(--surface-color);
+    border-radius: 0.2rem;
+}
+
+.result p {
+    color: var(--primary-white);
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.info-details {
+    width: 100%;
+    padding: 0.6rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.2rem;
+}
+
+.info-details .info-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.6rem;
+}
+
+.info-header h4 {
+    color: var(--primary-white);
+}
+
+.text-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.text-content .left-info,
+.text-content .right-info {
+    width: 50%;
+    color: var(--primary-white);
+    font-size: 0.8rem;
+    line-height: 1.7;
+}
+
+.text-content .left-info li,
+.text-content .right-info li {
+    list-style: none;
+}
+
+.left-info li strong,
+.right-info li strong {
+    color: var(--primary-orange);
+    font-weight: 500;
 }
 
 
