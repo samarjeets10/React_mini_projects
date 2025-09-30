@@ -14,7 +14,7 @@ function Card({que, ans}) {
     <div className='accordion_card'>
       <div className="card_header">
         <h2>{que}</h2>
-        {show ? <button onClick={handelShow}>Remove</button> : <button onClick={handelShow}>Add</button>}
+        {show ? <button onClick={handelShow}>Hide</button> : <button onClick={handelShow}>Show</button>}
       </div>
       {show ? <div className="card_body">
         <p>{ans}</p>

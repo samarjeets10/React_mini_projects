@@ -12,10 +12,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
 }
 
 .accordion_card .card_header h2 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
     color: #000;
 }
@@ -39,4 +40,6 @@
 .card_body p {
     font-size: 0.93rem;
     color: #676767;
+    overflow: hidden;
+    transition: all 0.5s ease;
 }
