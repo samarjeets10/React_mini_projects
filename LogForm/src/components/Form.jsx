@@ -1,9 +1,36 @@
-import React from 'react'
+import { useState } from 'react'
 
 function Form() {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [emailValid, setEmailValid] = useState(null);
+    const [passwordValid, setPasswordValid] = useState(null);
+
+    const validateEmail = (value) => {
+
+        const isValid = /^[^\s@]+@[^s@]+\.[^\s@]+$/.test(value);
+        setEmailValid(isValid);
+        return isValid;
+    };
+
+    const vaildatePassword = (value) => {
+
+        const isValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value);
+        setPasswordValid(isValid);
+        return isValid;
+    };
+
+    const handelFrom = (e) => {
+        e.preventDefault();
+    };
+
+
   return (
     <div>
-      <form className='p-[2.4rem] w-full sm:w-[70vmin] bg-white border-2 border-neutral-100 rounded-2xl shadow-neutral-200 shadow-2xl'>
+      <form 
+      onSubmit={handelFrom}
+      className='p-[2.4rem] w-full sm:w-[70vmin] bg-white border-2 border-neutral-100 rounded-2xl shadow-neutral-200 shadow-2xl'>
 
         <div className='w-full flex items-center justify-center'>
             <div className='h-[80px] w-[80px] border-2 border-neutral-100 rounded-2xl overflow-hidden shadow-xl shadow-neutral-200 '>
@@ -17,17 +44,41 @@ function Form() {
         </div>
 
         <div className='mt-8'>
-            <input type="text" placeholder='Your email' className='py-2 px-3 text-md w-full border-2 border-neutral-200 rounded-xl outline-none placeholder:text-neutral-400'/>
+            <input 
+            type="text" 
+            placeholder='Your email' 
+            className='py-2 px-3 text-md w-full border-2 border-neutral-200 rounded-xl outline-none placeholder:text-neutral-400'
+            value={email}
+            onChange={(e) => {
+                setEmail(e.target.value);
+                validateEmail(e.target.value);
+            }}
+            />
 
-            <div className='w-full'>
-                <p className='text-sm text-red-500 mt-2'>Email format is not valied</p>
-            </div>
+            {
+                emailValid === false ? <div className='w-full'>
+                        <p className='text-sm text-red-500 mt-2'>Email format is not valied</p>
+                    </div> : ""
 
-            <input type="text" placeholder='password' className='py-2 px-3 mt-4 text-md w-full border-2 border-neutral-200 rounded-xl outline-none placeholder:text-neutral-400'/>
+            }
 
-            <div className='w-full'>
-                <p className='text-sm text-red-500 mt-2'>Your password must be at least 8 character long and include both letters and numbers</p>
-            </div>
+            <input 
+            type="password" 
+            placeholder='password' 
+            className='py-2 px-3 mt-4 text-md w-full border-2 border-neutral-200 rounded-xl outline-none placeholder:text-neutral-400'
+            value={password}
+            onChange={(e) => {
+                setPassword(e.target.value);
+                vaildatePassword(e.target.value);
+            }}
+            />
+
+            {
+                passwordValid === false ? <div className='w-full'>
+                            <p className='text-sm text-red-500 mt-2'>Your password must be at least 8 character long with symbol and include both letters and numbers</p>
+                        </div> : ""
+
+            }
 
             <button className='w-full mt-4 text-md py-2 bg-neutral-900 text-white rounded-xl cursor-pointer'>Send me the magic link</button>
 
