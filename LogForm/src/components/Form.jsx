@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Form() {
+function Form( {onSuccess} ) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -9,7 +9,7 @@ function Form() {
 
     const validateEmail = (value) => {
 
-        const isValid = /^[^\s@]+@[^s@]+\.[^\s@]+$/.test(value);
+        const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
         setEmailValid(isValid);
         return isValid;
     };
@@ -21,15 +21,27 @@ function Form() {
         return isValid;
     };
 
-    const handelFrom = (e) => {
+    const handelForm = (e) => {
         e.preventDefault();
+
+        const isEmailOk = validateEmail(email);
+        const isPasswordOk = vaildatePassword(password);
+
+        if (isEmailOk && isPasswordOk) {
+            onSuccess();
+        } else {
+            console.log("please fix the log credentials validation.");
+        }
+
+        setEmail("");
+        setPassword("");
     };
 
 
   return (
     <div>
       <form 
-      onSubmit={handelFrom}
+      onSubmit={handelForm}
       className='p-[2.4rem] w-full sm:w-[70vmin] bg-white border-2 border-neutral-100 rounded-2xl shadow-neutral-200 shadow-2xl'>
 
         <div className='w-full flex items-center justify-center'>
@@ -59,7 +71,6 @@ function Form() {
                 emailValid === false ? <div className='w-full'>
                         <p className='text-sm text-red-500 mt-2'>Email format is not valied</p>
                     </div> : ""
-
             }
 
             <input 
