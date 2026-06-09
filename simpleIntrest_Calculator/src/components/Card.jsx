@@ -18,7 +18,7 @@ function Card() {
                     type="text" 
                     placeholder='eg. 20000' />
                 </div>
-                <div className='w-full'>
+                <div className='w-full flex flex-col'>
                     <label className='text-lg font-normal'>Your will be saving</label>
                     <input 
                     className='mt-2 py-1 text-md border-b-2 outline-none border-gray-300 text-lg'
@@ -28,14 +28,14 @@ function Card() {
             </div>
 
             <div className='w-full flex mt-2 items-center justify-between gap-12'>
-                <div className='w-full'>
+                <div className='w-full flex flex-col'>
                     <label className='text-lg font-normal'>Rate of return</label>
                     <input 
                     className='w-full mt-2 py-1 text-md border-b-2 outline-none border-gray-300 text-lg'
                     type="text" 
                     placeholder='eg. 10' />
                 </div>
-                <div className='w-full'>
+                <div className='w-full flex flex-col'>
                     <label className='text-lg font-normal'>How long you will contribute</label>
                     <input 
                     className='mt-2 py-1 text-md border-b-2 outline-none border-gray-300 text-lg'
