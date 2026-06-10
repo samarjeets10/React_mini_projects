@@ -3,10 +3,10 @@ import Card from './components/Card'
 
 function App() {
 
-   const [principleAmount, setPrincipleAmount] = useState();
-   const [years, setYears] = useState()
-   const [intrestRate, setIntrestRate] = useState();
-   const [monthlyCountribution, setMonthlyCountribution] = useState();
+   const [principleAmount, setPrincipleAmount] = useState(0);
+   const [years, setYears] = useState(0)
+   const [intrestRate, setIntrestRate] = useState(0);
+   const [monthlyCountribution, setMonthlyCountribution] = useState(0);
    const [depositMethod, setDepositMethod] = useState('Savings Account')
 
   return (

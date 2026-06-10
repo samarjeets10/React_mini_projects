@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React, { useMemo } from 'react'
 function Card(
     {
         principleAmount,
@@ -22,6 +21,62 @@ function Card(
         'Compound interest account',
         'Current account'
     ];
+
+    const { totalSavings, totalContributed, totalIntrest } = useMemo(() => {
+
+        let r = intrestRate / 100;
+        const t = years || 0;
+        const p = principleAmount || 0;
+        const pmt = monthlyCountribution || 0;
+
+        let finalAmount = 0;
+        let n = 12;
+
+        switch (depositMethod) {
+        case 'Savings account':
+            n = 12; // Monthly
+            break;
+        case 'Money market/High yielding account':
+            n = 4;  // Quarterly
+            break;
+        case 'Compound interest account':
+            n = 365; // Daily
+            break;
+        case 'Current account':
+            r = 0;  // Current accounts don't earn interest!
+            break;
+        default:
+            n = 12;
+    }
+
+        if (r == 0) {
+            finalAmount = p + (pmt * 12 * t);
+        } else {
+            
+           const compoundPrinciple = p * Math.pow(1 + r/n, n * t);
+
+            const futureValueOfContributions = pmt * ((Math.pow(1 + r/12, 12 * t) - 1) / (r/12));
+
+            finalAmount = compoundPrinciple + futureValueOfContributions;
+        }
+
+        const totalContributionsMade = p + (pmt * 12 * t);
+        const totalIntrestEarned = finalAmount - totalContributionsMade;
+
+        return {
+            totalSavings: finalAmount,
+            totalContributed: totalContributionsMade,
+            totalIntrest: Math.max(0, totalIntrestEarned)
+        };
+
+    }, [principleAmount, years, intrestRate, monthlyCountribution, depositMethod]);
+
+
+    const formatCurrency = (amount) => {
+        return new Intl.NumberFormat('en-IN', {
+            maximumFractionDigits: 0,
+        }).format(amount)
+    };
 
   return (
     <div className='w-full h-full py-8 px-6 bg-white rounded-2xl border-2 border-neutral-200 flex items-stretch gap-8'>
@@ -82,7 +137,7 @@ function Card(
                 <div className='w-full flex flex-wrap gap-4'>
                     {
                         accountType.map((type) => (
-                            <div key={type} className={`w-fit px-2 py-2  rounded-lg flex items-center gap-2 border-1 border-neutral-300 cursor-pointer transition-colors
+                            <div key={type} className={`w-fit px-2 py-2  rounded-lg flex items-center gap-2 border border-neutral-300 cursor-pointer transition-colors
                             ${
                                 depositMethod === type
                                 ? 'border-emerald-600 bg-emerald-50 text-emerald-800'
@@ -90,6 +145,7 @@ function Card(
                             }`}>
                                 <input 
                                 name="depositMethod"
+                                value={type}
                                 checked={depositMethod === type}
                                 onChange={(e) => setDepositMethod(e.target.value)}
                                 type="radio" />
@@ -109,20 +165,20 @@ function Card(
 
             <div className='w-full pb-4 mt-4 border-b-2 border-neutral-400 flex items-center justify-between gap-2'>
                 <h3 className='text-md text-normal'>Your savings(excludind all taxes)</h3>
-                <span className='text-xl font-semibold flex items-center gap-1'><i class="ri-money-rupee-circle-line"></i> <p>143,982.0</p></span>
+                <span className='text-xl font-semibold flex items-center gap-1'><i class="ri-money-rupee-circle-line"></i> <p>{formatCurrency(totalSavings)}</p></span>
             </div>
             <div className='w-full pb-4 mt-4 border-b-2 border-neutral-400 flex items-center justify-between gap-2'>
                 <h3 className='text-md text-normal'>Total amount contributed</h3>
-                <span className='text-xl font-semibold flex items-center gap-1'><i class="ri-money-rupee-circle-line"></i> <p>39,890</p></span>
+                <span className='text-xl font-semibold flex items-center gap-1'><i class="ri-money-rupee-circle-line"></i> <p>{formatCurrency(totalContributed)}</p></span>
             </div>
             <div className='w-full pb-4 mt-4 border-b-2 border-neutral-400 flex items-center justify-between gap-2'>
                 <h3 className='text-md text-normal'>Total intrest</h3>
-                <span className='text-xl font-semibold flex items-center gap-1'><i class="ri-money-rupee-circle-line"></i> <p>9890</p></span>
+                <span className='text-xl font-semibold flex items-center gap-1'><i class="ri-money-rupee-circle-line"></i> <p>{formatCurrency(totalIntrest)}</p></span>
             </div>
 
             <div className='w-full p-4 mt-2 bg-lime-300 rounded-xl text-green-800 flex items-center justify-between'>
                 <h3 className='text-md text-normal'>Your estimated savings</h3>
-                <span className='text-xl font-semibold flex items-center gap-1'><i class="ri-money-rupee-circle-line"></i> <p>9890</p></span>
+                <span className='text-xl font-semibold flex items-center gap-1'><i class="ri-money-rupee-circle-line"></i> <p>{formatCurrency(totalSavings)}</p></span>
             </div>
 
             <div className='w-full mt-6 flex items-center justify-between gap-4'>
