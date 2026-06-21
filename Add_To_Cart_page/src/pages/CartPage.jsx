@@ -1,8 +1,11 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
 
 function CartPage() {
   return (
-    <div>CartPage</div>
+    <div className='w-full min-h-screen relative bg-neutral-200'>
+      <Navbar />
+    </div>
   )
 }
 

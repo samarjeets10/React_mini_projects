@@ -4,7 +4,7 @@ import Filterbar from './Filterbar'
 function Hero({searchProduct, setSearchProduct, filterProduct, setFilterProduct}) {
 
   return (
-    <div className='flex flex-col flex-wrap gap-8 w-full py-6 px-4 sm:px-12 lg:px-24 xl:px-40'>
+    <div className='flex flex-col flex-wrap gap-8 lg:gap-12 w-full py-6 px-4 sm:px-12 lg:px-24 xl:px-40'>
         <Filterbar 
         searchProduct={searchProduct} 
         setSearchProduct={setSearchProduct}
@@ -12,10 +12,10 @@ function Hero({searchProduct, setSearchProduct, filterProduct, setFilterProduct}
         setFilterProduct={setFilterProduct}
         />
 
-        <div className='flex flex-col lg:flex-row gap-6 py-8'>
-            <div className='flex flex-col gap-8 w-full'>
-                <h2 className='text-2xl font-bold md:text-4xl lg:text-5xl'>Unleash Your Style <br />Shop the Latest <br />Trend </h2>
-                <p className='text-sm lg:text-md text-neutral-500 max-w-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, ad possimus. Ab recusandae quasi quos ad non ipsa voluptatibus eius!</p>
+        <div className='flex flex-col gap-6 lg:flex-row'>
+            <div className='flex flex-col gap-4 md:gap-6 lg:gap-8 w-full'>
+                <h2 className='text-3xl font-bold md:text-4xl lg:text-5xl'>Unleash Your Style <br />Shop the Latest <br />Trend </h2>
+                <p className='text-sm max-w-md lg:text-md text-neutral-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, ad possimus. Ab recusandae quasi quos ad non ipsa voluptatibus eius!</p>
 
                 <div className='flex items-center'>
                     <button className='px-12 py-4 bg-neutral-900 text-white text-md font-semibold rounded-full'>Shop Now</button>
