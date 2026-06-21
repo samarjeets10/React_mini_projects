@@ -16,13 +16,16 @@ function Navbar() {
             <i class="ri-user-3-line"></i>
           </div>
 
-          <div className='h-[20px] w-[20px] p-4 text-lg relative font-semibold bg-neutral-300 rounded-full flex items-center justify-center cursor-pointer'>
-            <i class="ri-shopping-bag-2-line"></i>
+          <Link to='/cart'>
+            <div className='h-[20px] w-[20px] p-4 text-lg relative font-semibold bg-neutral-300 rounded-full flex items-center justify-center cursor-pointer'>
+              <i class="ri-shopping-bag-2-line"></i>
 
-            {/* <div className='text-center absolute h-[10px] w-[10px] right-0 bottom-6 p-1 bg-red-600 roundede-full'>
-              <span className='text-xs'>0</span>
-            </div> */}
-          </div>
+              {/* <div className='text-center absolute h-[10px] w-[10px] right-0 bottom-6 p-1 bg-red-600 roundede-full'>
+                <span className='text-xs'>0</span>
+              </div> */}
+            </div>
+          </Link>
+
         </div>
 
     </div>
