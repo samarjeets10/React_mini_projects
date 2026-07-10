@@ -4,7 +4,7 @@ import Hero from '../components/Hero'
 import ItemsList from '../components/ItemsList'
 import products from '../assets/productsData'
 
-function ProductsPage() {
+function ProductsPage({addToCart}) {
 
   const [searchProduct, setSearchProduct] = useState("");
   const [filterProduct, setFilterProduct] = useState("all");
@@ -26,7 +26,7 @@ function ProductsPage() {
       filterProduct={filterProduct}
       setFilterProduct={setFilterProduct}
       />
-      <ItemsList displayList={displayProductsList} />
+      <ItemsList displayList={displayProductsList} addToCart={addToCart} />
     </div>
   )
 }
