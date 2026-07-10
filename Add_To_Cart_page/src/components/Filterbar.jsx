@@ -2,8 +2,6 @@ import React from 'react'
 
 function Filterbar({searchProduct, setSearchProduct, filterProduct, setFilterProduct}) {
 
-
-
   return (
     <>
         <div className='w-full flex items-center justify-between gap-6'>
@@ -29,7 +27,7 @@ function Filterbar({searchProduct, setSearchProduct, filterProduct, setFilterPro
                 </div>
             </div>
 
-            <div className='flex items-center justify-between gap-4'>
+            <div className=' hidden md:flex items-center justify-between gap-4'>
                 <div className='flex items-center justify-center px-3 py-1 border-2 rounded-full border-neutral-300 cursor-pointer'>
                     <h3 className='text-sm'>Mens</h3>
                 </div>

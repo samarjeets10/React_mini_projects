@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function ProductCard({product, addToCart}) {
+
+  const [added, setAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    setAdded(true);
+
+    setTimeout(() => {
+      setAdded(false);
+    }, 2000)
+  }
+
   return (
     <div className='flex flex-col gap-2 p-4 bg-neutral-100 rounded-xl'>
         <div className='h-[200px] w-full rounded-xl overflow-hidden'>
@@ -17,9 +29,13 @@ function ProductCard({product, addToCart}) {
           <h2 className='text-xl font-bold'>${product.price}</h2>
 
           <button 
-          className='px-4 py-2 text-xs bg-gray-900 cursor-pointer text-white rounded-full'
-          onClick={() => addToCart(product)}
-          >Add to Cart</button>
+          className={`w-28 px-4 py-2 text-sm font-semibold ${added ? 'bg-gray-400' : 'bg-neutral-900'} cursor-pointer text-white rounded-full`}
+          onClick={handleAddToCart}
+          >
+            {
+              added ? "Added" : "Add to Cart"
+            }
+          </button>
         </div>
     </div>
   )

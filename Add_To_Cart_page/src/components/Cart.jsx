@@ -2,15 +2,21 @@ import React from 'react'
 import ShippingForm from './ShippingForm'
 import OrderTotal from './OrderTotal'
 import OrderSummary from './OrderSummary'
+import PaymentMethod from './PaymentMethod'
+import PromoCode from './PromoCode'
 function Cart({ cart, increaseQuantity, decreaseQuantity, removeFromCart }) {
   return (
     <div className='w-full px-4 py-8 sm:px-4 lg:px-24 xl:px-40'>
 
         <div className='w-full flex gap-6 flex-col-reverse sm:flex-row'>
 
-            <div className='w-full sm:w-1/2'>
-                {/* shipping Info section */}
+            <div className='w-full sm:w-1/2 flex flex-col gap-4'>
+                {/* shipping Info component */}
                 <ShippingForm />
+                {/* Payments Methos component */}
+                <PaymentMethod />
+                {/* promo Code component */}
+                <PromoCode />
             </div>
 
             <div className='w-full sm:w-1/2 flex flex-col gap-4'>

@@ -25,11 +25,32 @@ function Hero({searchProduct, setSearchProduct, filterProduct, setFilterProduct}
                 </div>
             </div>
 
-            <div className='h-full w-full rounded-2xl overflow-hidden'>
+            <div className='h-full w-full rounded-3xl overflow-hidden'>
                 <img 
                 className='w-full h-full object-cover object-center'
                 src="https://plus.unsplash.com/premium_photo-1687294575742-27c7f9fd6935?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI3fHx8ZW58MHx8fHx8" alt="" />
             </div>
+        </div>
+
+        <div className='w-full grid grid-cols-3 gap-4'>
+
+            <div className='h-60 overflow-hidden rounded-3xl shadow-xs'>
+                <img 
+                className='h-full w-full object-cover object-center'
+                src="https://images.unsplash.com/photo-1680003266512-eebf9ba167b3?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="#" />
+            </div>
+
+            <div className='h-60 overflow-hidden rounded-3xl shadow-xs'>
+                <img 
+                className='h-full w-full object-cover object-center'
+                src="https://plus.unsplash.com/premium_photo-1688497830977-f9ab9f958ca7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzd8fEZhc2hpb24lMjBtb2RlbHN8ZW58MHx8MHx8fDA%3D" alt="#" />
+            </div>
+
+            <div className='h-60 text-center flex flex-col gap-2 items-center justify-center rounded-3xl border-2 border-neutral-300 shadow-xs'>
+                <p className='text-2xl font-bold'>Model wearing <br /> full out fits</p>
+                <button className='px-6 py-2 text-sm text-white bg-neutral-900 rounded-lg'>Explore Fasshion</button>
+            </div>
+
         </div>
 
     </div>
