@@ -23,6 +23,15 @@ function Navbar({cart}) {
             location.pathname === '/' ? (
                 <Link to='/cart'>
                   <div className='h-[20px] w-[20px] p-4 text-lg relative font-semibold bg-neutral-300 rounded-full flex items-center justify-center cursor-pointer'>
+                    
+                    {
+                      cart.length > 0 ? (
+                            <div className='h-[10px] w-[10px] absolute top-[-1px] right-[-3px] p-2 flex items-center justify-center rounded-full bg-red-600'>
+                              <span className='text-white text-xs'>{cart.length}</span>
+                            </div>
+                      ) : ""
+                    }
+
                     <i class="ri-shopping-bag-2-line"></i>
                   </div>
                 </Link>
@@ -36,6 +45,7 @@ function Navbar({cart}) {
           }
 
         </div>
+
 
     </div>
   )

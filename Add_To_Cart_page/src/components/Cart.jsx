@@ -2,7 +2,7 @@ import React from 'react'
 import ShippingForm from './ShippingForm'
 import OrderTotal from './OrderTotal'
 import OrderSummary from './OrderSummary'
-function Cart({ cart }) {
+function Cart({ cart, increaseQuantity, decreaseQuantity, removeFromCart }) {
   return (
     <div className='w-full px-4 py-8 sm:px-4 lg:px-24 xl:px-40'>
 
@@ -16,7 +16,7 @@ function Cart({ cart }) {
             <div className='w-full sm:w-1/2 flex flex-col gap-4'>
                 
                 {/* Order Cart Summary component */}
-                <OrderSummary cart={cart} />
+                <OrderSummary cart={cart} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity} removeFromCart={removeFromCart} />
 
                 {/* Order Total component */}
                 <OrderTotal cart={cart} />

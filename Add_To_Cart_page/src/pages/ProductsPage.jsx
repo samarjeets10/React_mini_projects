@@ -4,7 +4,7 @@ import Hero from '../components/Hero'
 import ItemsList from '../components/ItemsList'
 import products from '../assets/productsData'
 
-function ProductsPage({addToCart}) {
+function ProductsPage({addToCart, cart}) {
 
   const [searchProduct, setSearchProduct] = useState("");
   const [filterProduct, setFilterProduct] = useState("all");
@@ -19,7 +19,7 @@ function ProductsPage({addToCart}) {
 
   return (
     <div className='w-full min-h-screen relative bg-neutral-200'>
-      <Navbar />
+      <Navbar cart={cart} />
       <Hero
       searchProduct={searchProduct}
       setSearchProduct={setSearchProduct}

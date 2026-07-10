@@ -1,6 +1,14 @@
 import React from 'react'
 
-function OrderTotal() {
+function OrderTotal({ cart }) {
+
+    const subTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+
+    const shipping = 15.00;
+    const tax = 0.08;
+
+    const finalTotal = cart.length > 0 ? subTotal + shipping + tax : 0; 
+
   return (
     <div className='p-4 border border-neutral-300 rounded-md shadow-xs'>
         <h1 className='text-xl font-bold mb-4'>Order Total</h1>
@@ -8,24 +16,28 @@ function OrderTotal() {
         <div className='w-full flex flex-col gap-2'>
             <div className='w-full flex items-center justify-between gap-2'>
                 <h3 className='text-md font-semibold'>Subtotal</h3>
-                <span className='text-md text-neutral-500'>$2096.00</span>
+                <span className='text-md text-neutral-500'>${subTotal.toFixed(2)}</span>
             </div>
 
             <div className='w-full flex items-center justify-between gap-2'>
                 <h3 className='text-md font-semibold'>Shipping</h3>
-                <span className='text-md text-neutral-500'>$15.00</span>
+                <span className='text-md text-neutral-500'>
+                    {
+                        cart.length > 0 ? `$${shipping.toFixed(2)}` : '$0.00'
+                    }
+                </span>
             </div>
 
             <div className='w-full flex items-center justify-between gap-4'>
-                <h3 className='text-md font-semibold'>Tax</h3>
-                <span className='text-md text-neutral-500'>$167.68</span>
+                <h3 className='text-md font-semibold'>Tax (8%)</h3>
+                <span className='text-md text-neutral-500'>${tax.toFixed(2)}</span>
             </div>
 
             <div className='h-[1px] mt-2 w-full bg-neutral-300'></div>
 
             <div className='w-full flex items-center justify-between gap-4'>
                 <h2 className='text-xl font-bold'>Total</h2>
-                <span className='text-xl font-bold'>$2278.68</span>
+                <span className='text-xl font-bold'>${finalTotal.toFixed(2)}</span>
             </div>
         </div>
 

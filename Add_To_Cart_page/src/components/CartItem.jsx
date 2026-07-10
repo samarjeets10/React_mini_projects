@@ -1,22 +1,41 @@
 import React from 'react'
 
-function CartItem({item}) {
+function CartItem({item, increaseQuantity, decreaseQuantity, removeFromCart}) {
   return (
     <div className='w-full p-4 border border-neutral-300 rounded-xl'>
         <div className='w-full flex gap-2'>
             <div className='overflow-hidden rounded-xl'>
                 <img 
-                className='h-30 w-30 object-cover object-center'
+                className='h-30 w-40 object-cover object-center'
                 src={item.image} alt={item.name} />
             </div>
 
             <div className='h-full p-2 flex flex-col gap-2'>
                 <h2 className='text-lg font-bold'>{item.name}</h2>
-                <p className='text-sm text-neutral-400'>Size: <span>{item.size}</span></p>
+                <div className='w-full flex items-center gap-4'>
+                    <p className='text-md text-neutral-400'>Size:</p>
+                    <div className='flex items-center gap-2'>
+                        {
+                            item.size.map((size) => (
+                                <span className='px-1 bg-neutral-300 text-xs text-neutral-600 rounded-lg'>{size}</span>
+                            ))
+                        }
+                    </div>
+                </div>
                 
                 <div className='w-full flex items-center justify-between gap-4'>
                     <h3 className='text-lg font-bold'>$<span>{item.price}</span></h3>
-                    <p className='text-sm font-semibold'>Qty: <span className='text-sm text-neutral-400'>{item.quantity}</span></p>
+                    <div className='flex items-center gap-4'>
+                        <button 
+                        className='px-1 text-white text-sm bg-neutral-900 border-none rounded-sm cursor-pointer font-semibold'
+                        onClick={() => decreaseQuantity(item.id)}
+                        ><i class="ri-subtract-line"></i></button>
+                        <span className='text-md font-semibold'>{item.quantity}</span>
+                        <button 
+                        className='px-1 text-white text-sm bg-neutral-900 border-none rounded-sm cursor-pointer font-semibold'
+                        onClick={() => increaseQuantity(item.id)}
+                        ><i class="ri-add-line"></i> </button>
+                    </div>
                 </div>
             </div>
 
@@ -33,7 +52,9 @@ function CartItem({item}) {
             <div className='flex items-center gap-2'>
                 <button className='px-6 py-2 text-white font-semibold bg-neutral-900 rounded-full border-none cursor-pointer'>Buy</button>
 
-                <button className='px-3 py-2 text-white font-semibold bg-neutral-900 rounded-full border-none cursor-pointer'>
+                <button 
+                onClick={() => removeFromCart(item.id)}
+                className='px-3 py-2 text-white font-semibold bg-neutral-900 rounded-full border-none cursor-pointer'>
                     <i class="ri-delete-bin-6-line"></i>
                 </button>
             </div>
